@@ -1,0 +1,17 @@
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <th>Contact Number</th>
+            <th>Event</th>
+            <th>City</th>   
+        </tr>
+        <tr>
+            <td>{{registration.contact_number}}</td>
+            <td>{{registration.event}}</td>
+            <td>{{registration.city}}</td>
+    
+        </tr>
+    </table>
+    <button type="submit">Delete</button>
+</form>

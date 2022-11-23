@@ -1,0 +1,42 @@
+{{user.username}}
+{{user.address}}
+{{user.first_name}}
+{{user.last_name}}
+
+<hr>
+<br>
+<h1>Reservation History</h1>
+{% for register in registration %}
+<table>
+    <tr>
+        <th>Contact Number</th>
+        <th>Event</th>
+        <th>City</th>
+        <th>Radio Select</th>
+        <th>Package Info</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+    <tr>
+        <td>{{register.contact_number}}</td>
+        <td>{{register.event}}</td>
+        <td>{{register.city}}</td>
+        {% if register.package == "package3"%}
+        <td>{{register.package}}</td>
+        <td>this is your package 3</td>
+        {% elif register.package == "package1"%}
+        <td>{{register.package}}</td>
+        <td>this is your package 1</td>
+        {% elif register.package == "package2"%}
+        <td>{{register.package}}</td>
+        <td>this is your package 2</td>
+        {% else %}
+        <td>No selected Package</td>
+        <td>No selected</td>
+        {% endif%}
+        <td><a href="{% url 'delete' register.id %}">DELETE</a></td>
+        <td><a href="{% url 'update' register.id %}">Change</a></td>
+
+    </tr>
+</table>
+{% endfor %}

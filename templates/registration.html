@@ -1,0 +1,59 @@
+<script>
+    function but(x)
+    {
+        if (x==0)
+        document.getElementById("event").style.display="block";
+        else
+        document.getElementById("event").style.display="none";
+        return;
+    }
+</script>
+
+<style>
+    .design {
+        font-family: sans-serif;
+        font-size: 20px;
+        border: 1px solid blue hidden;
+        width: 50%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        letter-spacing: 4px;
+        text-indent: 50px;
+        text-align: justify;
+    }
+</style>
+
+<form method="POST">
+    {% csrf_token %}
+    <h1>Contact Number</h1>{{form.contact_number}}
+    <h1>Zipcode</h1>{{form.zipcode}}
+    <h1>City</h1>{{form.city}}
+
+    <br>
+    <input type="radio" name="rad1" onclick="but(0)" checked>Outdoor
+    <input type="radio" onclick="but(1)" name="rad1">No forms
+
+    <div id="event">
+        <input type="checkbox" onclick="check()" id="wedding"/>wedding
+        <div id="choose" style="display:none ;" class="design">
+            {{form.package}}
+        </div>
+    </div>
+    <button type="submit">Reserve</button>
+</form>
+
+
+
+<script>
+    function check(){
+        var cb = document.getElementById("wedding");
+        var cs = document.getElementById("choose");
+        if (cb.checked==true){
+            cs.style.display="block";
+        } else {
+            cs.style.display = "none";
+        }
+
+    }
+</script>
